@@ -1,0 +1,49 @@
+{# <div class="container-fluid">
+	<div class="row">
+
+		<div class="col-12">
+			<div class="owl-carousel owl-theme">
+
+				{% for article in last6articles %}
+
+					<div class="item position-relative">
+						<div class="p-xl-5 p-3" style="position:absolute;bottom:0">
+							<h4 class="h4_img text-orange fw-bold text-start">{{ article.category|capitalize }}</h4>
+							<h3 class="text-decoration-none h3_img text-white fw-bold my-lg-2 my-0">{{ article.title }}</h3>
+							<p class="text-white text-start fw-bold">{{ article.createdAt|date('Y-m-d') }}</p>
+						</div>
+						<a href="{{ path('article_show', {'id': article.id}) }}" class="w-100 d-block">
+							<img src="{{ article.image ? vich_uploader_asset(article,'imageFile') : asset("build/img/pin_default_img/placeholder.jpg") }}">
+						</a>
+					</div>
+
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+</div> #}
+
+
+<div class="container-fluid">
+	<div class="row">
+
+
+		<div id="owl-demo" class="owl-carousel owl-theme">
+			{% for article in last6articles %}
+				<div class="item position-relative bg-white">
+					<div class="p-3" style="position:absolute;bottom:0">
+						<h4 class="h5_img text-orange fw-bold text-start">{{ article.category|capitalize }}</h4>
+						<h3 class="text-decoration-none h3_img text-white fw-bold my-lg-2 my-0">{{ article.title }}</h3>
+						<p class="text-white text-start fw-bold">{{ article.createdAt|date('d-m-Y') }}</p>
+					</div>
+					<a href="{{ path('article_show', {'id': article.id}) }}" class="w-100 d-block">
+						<img class="img-fluid" src="{{ article.image ? vich_uploader_asset(article,'imageFile') : asset("build/img/pin_default_img/placeholder.jpg") }}">
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+
+
+	</div>
+</div>

@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="row mb-lg-5 mb-0">
+
+		<div class="col-lg-8 col-12 px-lg-0 px-3">
+			<img src="{{ asset('build/img/about/portrait.jpg') }}" class="img-fluid">
+		</div>
+
+		<div class="col-lg-4 col-12 p-4 mt-lg-0 mt-3">
+			<h3 class="w-100">En quelques mots</h3>
+			<p class="p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas hic rerum nulla minus architecto, doloribus perferendis exercitationem natus, nobis nostrum eaque illo temporibus vitae cum consequatur a nihil veniam sit?
+				Vel, amet enim esse nemo soluta aperiam inventore assumenda cum maxime sit quod accusantium doloribus blanditiis nulla debitis ut veniam possimus reiciendis dolore earum ex fugit! Quisquam fuga assumenda ipsum.</p>
+		</div>
+	</div>
+
+	<div class="row my-lg-5">
+		<div class="col-12 mt-lg-5 mt-0">
+			<h2>
+				Mes passions
+			</h2>
+		</div>
+	</div>
+
+	<div class="row mt-5 mb-lg-5">
+
+		<div class="col-lg mb-lg-0 mb-3 px-5">
+			<p>
+				<i class="fas fa-desktop"></i>
+			</p>
+			<br>
+			<p>Quisque bibendum cursus viverra. Mauris at ex ipsum. Aenean condimentum urna nisl, eget interdum ante euismod vel. Aliquam at metus sit amet nunc dapibus posuere.</p>
+		</div>
+		<div class="col-lg mb-lg-0 mb-3 px-5">
+			<p>
+				<i class="fas fa-music"></i>
+			</p>
+			<br>
+			<p>Maecenas et metus nisl. Morbi ac interdum metus. Aliquam erat volutpat. Donec posuere tortor vel volutpat consequat. Mauris sagittis magna vel tellus semper interdum et id sapien.</p>
+		</div>
+		<div class="col-lg mb-lg-0 mb-3 px-5">
+			<p>
+				<i class="fas fa-photo-video"></i>
+			</p>
+			<br>
+			<p>Maecenas et metus nisl. Morbi ac interdum metus. Aliquam erat volutpat. Donec posuere tortor vel volutpat consequat. Mauris sagittis magna vel tellus semper interdum et id sapien.</p>
+		</div>
+	</div>
+
+	<div class="my-lg-5 my-3 py-2"></div>
+
+	{% include 'layouts/partials/_social_icons.html.twig' %}
+
+	<div class="my-lg-5 my-3"></div>
+</div>{#  #}{% endblock %}

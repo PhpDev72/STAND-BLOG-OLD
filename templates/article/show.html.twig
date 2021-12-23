@@ -1,0 +1,117 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+
+	<div
+		class="row">
+
+		{# ***************** Article details ******************** #}
+		<div class="col-lg-12">
+			<div class="blog-posts">
+				<div class="blog-thumb">
+					<img src="{{ article.image ? vich_uploader_asset(article,'imageFile') : asset("build/img/pin_default_img/placeholder.jpg") }}" class="w-100">
+				</div>
+				<div class="down-content p30">
+
+					<h4>{{ article.title }}</h4>
+
+					<div>
+						<ul class="post-share">
+							<li>
+								<i class="fas fa-user-edit text-orange"></i>
+							</li>
+							<li>
+								<a href="#">{{ article.user.fullName }}</a>
+							</li>
+						</ul>
+					</div>
+
+					<ul class="post-info">
+						<li>
+							<a href="#">Publié le
+								{{ article.createdAt|date('Y-m-d à H:i:s') }}</a>
+						</li>
+						<li>
+							<a href="#">10 Commentaires</a>
+						</li>
+					</ul>
+
+					<p>{{ article.description }}</p>
+
+					<ul class="post-info mb-2">
+						<li>
+							<a href="#">Dernière mise à jour le
+								{{ article.updatedAt|date('Y-m-d à H:i:s') }}</a>
+						</li>
+					</ul>
+
+					<ul class="post-tags">
+						<li>
+							<i class="fa fa-tags text-orange"></i>
+						</li>
+						<li>
+							<a href="#">{{ article.category|capitalize }}</a>
+						</li>
+					</ul>
+
+					{% if app.user and app.user.fullName == article.user.fullName %}
+						<div class="col-12 mt-5 d-flex justify-content-between">
+							<a class="btn btn-primary btn-sm text-decoration-none" href="{{ path('article_edit', {'id': article.id}) }}">
+								<i class="fas fa-edit"></i>&nbsp;Editer
+							</a>
+							{{ include('article/_delete_form.html.twig') }}
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+
+
+		{# ***************** Commentaires utilisateurs ************************* #}
+
+
+		<div class="col-lg-12 my-5">
+			<div class="blog-posts comments">
+				<div class="sidebar-heading">
+					<h2>3 commentaires</h2>
+				</div>
+				<div class="content p30">
+					<ul>
+						{% for i in 1..4 %}
+							<li class="d-flex mb-5">
+								<div class="{{ i is even ? "ps-md-5" : "ps-0" }}">
+									<img src="{{ asset("build/img/comments/comment-author-0#{i}.jpg") }}" class="">
+								</div>
+								<div class="px-4">
+									<h6 class="mb-2">Charles Kate &emsp;<span class="text-orange" style="font-size:14px">May 16, 2020</span>
+									</h6>
+									<p>Fusce ornare mollus eros. Duis et diam vitae justo fringilla condimentum eu quis leo.Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.</p>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		{# ******** Formulaire de contact **************** #}
+
+		{% if app.user and app.user.fullName != article.user.fullName %}
+
+			{% include 'layouts/partials/_comment_form.html.twig' %}
+
+		{% endif %}
+
+
+		{# *************************************************************** #}
+
+
+	</div>
+
+
+{% endblock %}

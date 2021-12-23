@@ -1,0 +1,13 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+
+{% block body %}
+	<h1 class="text-center">Création d'article</h1>
+
+	{{ include('article/_form.html.twig') }}
+
+{% endblock %}

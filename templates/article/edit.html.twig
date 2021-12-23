@@ -1,0 +1,12 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Edition d'article</h1>
+
+	{{ include('article/_form.html.twig', {'button_label': 'Editer'}) }}
+
+{% endblock %}

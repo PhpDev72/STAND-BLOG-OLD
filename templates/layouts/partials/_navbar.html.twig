@@ -1,0 +1,46 @@
+<!-- Header -->
+<header class="sticky-top">
+	<nav class="navbar navbar-expand-xl navbar-dark bg-white mb-5">
+		<div class="container">
+			<a class="navbar-brand text-decoration-none" href="{{ path('app_home') }}">
+				<h2>Stand Blog<em>.</em>
+				</h2>
+			</a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse pt-xl-0 pt-5" id="navbarCollapse">
+				<ul class="navbar-nav mt-xl-0 mt-3 ms-xl-auto">
+					<li class="nav-item">
+						<a class="nav-link {{ active(myRoute,'app_home' ) }} text-decoration-none" href=" {{ path('app_home') }} ">Accueil
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ active(myRoute ,'article_index') }}" href="{{ path('article_index') }}">Articles</a>
+					</li>
+					{#  #}
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<li class="nav-item">
+							<a class="nav-link {{ active(myRoute,'article_new') }}" href="{{ path('article_new') }}">Créer pin</a>
+						</li>
+					{% endif %}
+					{#  #}
+
+					<li class="nav-item">
+						<a class="nav-link {{ active(myRoute,'app_about') }}" href="{{ path('app_about') }}">A propos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ active(myRoute,'app_contact') }}" href="{{ path('app_contact') }}">Contact</a>
+					</li>
+
+					{% if app.user is null %}
+						<li class="nav-item">
+							<a class="nav-link {{ active(myRoute,'app_login') }}" href="{{ path('app_login') }}">Se connecter</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>

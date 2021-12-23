@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+	</head>
+	<body>
+
+		{% include 'layouts/partials/_navbar.html.twig' %}
+
+		{% if myRoute == "app_home" and last6articles|length >= 6 %}
+			{% include 'layouts/partials/_carousel.html.twig' %}
+		{% else %}
+			{% include 'layouts/partials/_banner.html.twig' %}
+		{% endif %}
+
+
+		<div
+			class="container main_contain my-5">
+			{#  #}
+			<div class="row mt-lg-5 mt-3 px-lg-0 px-1">
+
+				{% include 'layouts/partials/_flash_message.html.twig' %}
+
+				<div
+					class="{{ col_12(myRoute,"app_about") }} pt-2">
+					{#  #}
+					{% block body %}{% endblock %}
+					{#  #}
+
+					{% if myRoute != "app_about" and  myRoute != "app_contact" %}
+						{% include 'layouts/partials/_newsletter.html.twig' %}
+					{% endif %}
+
+
+				</div>
+
+				{% if myRoute != "app_about" %}
+					<div class="col-lg-4 mt-0">
+						{% include 'layouts/partials/_sidebar.html.twig' %}
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+
+
+		{% include 'layouts/partials/_footer.html.twig' %}
+
+
+		<!-- JQUERY -->
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+		<!-- OWL-CAROUSEL -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+
+	</body>
+</html>

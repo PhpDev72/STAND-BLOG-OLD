@@ -1,0 +1,28 @@
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+	<div
+	class="heading-page header-text"> {#  #}
+	<section class="page-heading" style="background-image: url({{ asset('build/img/header/heading-bg.jpg') }}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="text-content">
+						<h4 class="text-orange">{{ page }}</h4>
+						<div class="d-flex flex-wrap justify-content-xl-between align-items-center">
+							<h2 class="text-white">{{ subtitle }}</h2>
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<p class="text-white text-end lead mt-xl-0 mt-4">Bonjour
+									<span class="text-orange me-3">{{ app.user.fullName }}</span>
+									<a class="ms-auto btn btn-sm btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
+								</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+
+<!-- Banner Ends Here -->

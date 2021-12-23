@@ -1,0 +1,67 @@
+{# <!DOCTYPE html>
+
+<title>Register</title>
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %} #}
+
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="row mb-5 px-lg-0 px-3">
+
+		<h1 class="text-center">Créer un compte</h1>
+
+		<div class="col-lg-10 col-12 mx-lg-auto mt-5 p-lg-5 p-3 shadow-lg" style="background:#d5d5d5">
+			{{ form_start(registrationForm) }}
+
+			<div class="my-4">
+				{{ form_row(registrationForm.firstName,{'attr': {'placeholder':'prénom'}}) }}
+			</div>
+			<div class="my-4">
+				{{ form_row(registrationForm.lastName,{'attr': {'placeholder':'nom'}}) }}
+			</div>
+
+			<div class="my-4">
+				{{ form_row(registrationForm.email,{'attr': {'placeholder':'adresse email'}}) }}
+			</div>
+
+			<div class="my-4">
+				{{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe',attr: {'placeholder':'mot de passe'}
+			}) }}
+			</div>
+
+			<div class="my-4">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+
+			<div>
+				<button type="submit" class="btn btn-orange w-100 my-4" formnovalidate>S'enregistrer</button>
+			</div>
+
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
+
+{% endblock %}

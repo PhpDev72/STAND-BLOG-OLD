@@ -1,0 +1,25 @@
+<div class="row px-lg-0 px-3 mb-5 ">
+
+	<div class="col-lg-10 col-12 mx-lg-auto mt-5 p-lg-5 p-3 shadow-lg article_form" style="background:#d5d5d5">
+
+		{{ form_start(form) }}
+
+		{{ form_row(form.imageFile) }}
+		{% if myRoute == 'article_edit' %}
+			<figure class="p-1 shadow-sm img-thumbnail mt-2 mb-4" style="width:40%">
+				<img src="{{ article.image ? vich_uploader_asset(article,'imageFile') : asset("build/img/pin_default_img/placeholder.jpg") }}" class="w-100 img-fluid">
+
+				<figcaption class="bg-black text-white text-center p-1">
+					Image actuelle</figcaption>
+			</figure>
+		{% endif %}
+
+		{{ form_row(form.title,{'attr': {'placeholder':'Titre de l\'article'}}) }}
+		    {{ form_row(form.description,{'attr': {'placeholder':'Description de l\'article'}}) }}
+		{{ form_row(form.category,{'attr': {'placeholder':'Catégorie de l\'article'}}) }}
+		<button class="btn btn-orange w-100 mt-4" formnovalidate>{{ button_label|default('Créer') }}</button>
+		{{ form_end(form) }}
+		
+		</div>
+	
+</div>

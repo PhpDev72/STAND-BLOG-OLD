@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="col-12">
+		<h2>
+			Présentation du site
+		</h2>
+	</div>
+
+	<div class="col-12 p30">
+
+		{% for i in 1..3 %}
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic earum sunt quae nulla ab, quis corrupti, vero ducimus laboriosam officiis perferendis architecto! Ipsum aliquam dolor tempora explicabo repellendus cum at!
+				Dolorem et fuga omnis cum nostrum molestias perspiciatis a quos deserunt voluptatibus praesentium quam ut unde harum provident ipsam, ab vel? Eos vitae nobis soluta repellat quasi aliquid ea minima.
+				Totam impedit mollitia corporis sequi molestiae dolorem sit iusto, ipsa, voluptates, quas beatae repellendus vero? Nulla repellendus perferendis molestias error voluptatum laboriosam vitae, consequatur quae quis, harum porro consectetur exercitationem?</p>
+
+			{% if i == 1 or i == 2 %}
+				{{ "<br>"}}
+			{% endif %}
+
+		{% endfor %}
+
+	</div>
+
+
+{% endblock %}

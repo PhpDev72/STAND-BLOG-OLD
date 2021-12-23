@@ -1,0 +1,41 @@
+<div class="row mb-5 px-lg-0 px-3">
+
+	<h1 class="text-center">Se connecter</h1>
+
+	<div class="col-lg-10 col-12 mx-lg-auto mt-5 p-lg-5 p-3 shadow-lg" style="background:#d5d5d5">
+
+		<form method="post">
+
+			{% if error %}
+				<div class="alert alert-red text-center mb-5">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			<label for="inputEmail">Adresse email</label>
+			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control my-2" placeholder="email" autocomplete="email" required>
+
+			<label for="inputPassword">Mot de passe</label>
+			<input type="password" name="password" id="inputPassword" class="form-control my-3" placeholder="mot de passe" autocomplete="current-password" required>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+			<div class="checkbox mb-5">
+				<label>
+					<input type="checkbox" name="_remember_me">
+					Se souvenir de moi
+				</label>
+			</div>
+
+
+			<button class="btn w-100 btn-orange" type="submit">
+				S'identifier
+			</button>
+
+			<p class="mt-5 text-center">Pas encore inscrit?
+				<a class="text-orange text-decoration-underline" href="{{ path('app_register') }}">Créer un compte</a>
+			</p>
+		</form>
+
+	</div>
+
+</div>
