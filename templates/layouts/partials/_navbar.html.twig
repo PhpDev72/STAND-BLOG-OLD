@@ -33,6 +33,28 @@
 					<li class="nav-item">
 						<a class="nav-link {{ active(myRoute,'app_contact') }}" href="{{ path('app_contact') }}">Contact</a>
 					</li>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<li>
+							<div class="dropdown">
+								<button class="btn dropdown-toggle dropdown_user" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="text-success me-1 fw-bold">{{ app.user.fullName }}</span>
+									<img width="28" height="28" class="rounded-circle border border-success" src="{{ app.user.image ? vich_uploader_asset(app.user,'imageFile') : asset("build/img/user_avatar/f_profil_defaut.jpg") }}">
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									<li>
+										<a class="dropdown-item" href="#">Information</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Compte</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+					{% endif %}
 
 					{% if app.user is null %}
 						<li class="nav-item">

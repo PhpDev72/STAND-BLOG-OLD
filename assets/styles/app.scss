@@ -1041,6 +1041,19 @@ input[type="checkbox"]:checked{
     color: #20232e !important;
 }
 
+.dropdown_user{
+
+    // text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #1e1e1e;
+}
+
+.dropdown-item:hover{
+
+    color: #cf6b28 !important;
+}
 
 
 // ****** Media Queries **********
@@ -1055,7 +1068,7 @@ font-size: 20px !important;
 
 .h5_img{
 
-    font-size: 17px !important;
+    font-size: 15px !important;
     }
 
 }

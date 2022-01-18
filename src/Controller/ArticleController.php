@@ -36,8 +36,8 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'title' => 'Articles',
             'myRoute' => $request->attributes->get('_route'),
-            'page' => 'Articles',
-            'subtitle' => $all . ' Articles',
+            'page' => 'Publication',
+            'subtitle' => $all,
             'articles' => $articles,
             'nPage' => $nPage,
             'totalPages' => $totalPages
@@ -74,7 +74,7 @@ class ArticleController extends AbstractController
             'title' => 'Créer un article',
             'myRoute' => $request->attributes->get('_route'),
             "page" => "Créer",
-            "subtitle" => "Ajouter un nouvel article",
+            "subtitle" => "Un article",
         ]);
     }
 
@@ -110,7 +110,7 @@ class ArticleController extends AbstractController
             'title' => 'Editer un article',
             'myRoute' => $request->attributes->get('_route'),
             "page" => "Editer",
-            "subtitle" => "Mettre à jour article",
+            "subtitle" => "Un article",
         ]);
     }
 

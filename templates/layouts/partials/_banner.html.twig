@@ -8,14 +8,23 @@
 				<div class="col-lg-12">
 					<div class="text-content">
 						<h4 class="text-orange">{{ page }}</h4>
-						<div class="d-flex flex-wrap justify-content-xl-between align-items-center">
+						<div class="d-flex flex-wrap justify-content-lg-between align-items-center">
 							<h2 class="text-white">{{ subtitle }}</h2>
-							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-								<p class="text-white text-end lead mt-xl-0 mt-4">Bonjour
-									<span class="text-orange me-3">{{ app.user.fullName }}</span>
-									<a class="ms-auto btn btn-sm btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
-								</p>
-							{% endif %}
+
+							{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							
+															<ul class="d-xl-flex align-items-center d-none ms-lg-0 ms-auto">
+																<li>
+																	<span class="text-orange lead text-end fw-bold">{{ app.user.fullName }}</span>
+																</li>
+																<li class="ms-2">
+																	<img width="35" height="35" class="rounded-circle border border-2 border-success" src="{{ app.user.image ? vich_uploader_asset(app.user,'imageFile') : asset("build/img/user_avatar/f_profil_defaut.jpg") }}">
+																</li>
+															</ul>
+							
+														{% endif %} #}
+
+
 						</div>
 					</div>
 				</div>

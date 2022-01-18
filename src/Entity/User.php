@@ -10,10 +10,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\Traits\Timestampable;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -53,6 +57,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property
+     *	fileNameProperty="image" correspond au champ image de l'entité
+     * 
+     * @Vich\UploadableField(mapping="user_image", fileNameProperty="image")
+     * @Assert\Image(maxSize="8M",mimeTypes = {"image/jpg","image/jpeg","image/png"},mimeTypesMessage = "Les images doivent être au format JPEG, PNG ou JPG")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
 
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="user", orphanRemoval=true)
@@ -221,6 +241,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            //Il est nécessaire qu'au moins un champ change si vous utilisez la doctrine
+            //sinon les écouteurs d'événements ne seront pas appelés et le fichier sera perdu.
+
+            $this->setUpdatedAt(new \DateTimeImmutable);
+            //$this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+
     // public function isVerified(): bool
     // {
     //     return $this->isVerified;
@@ -232,4 +275,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     //     return $this;
     // }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
 }
